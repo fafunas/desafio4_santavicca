@@ -5,10 +5,13 @@
     <v-main class="ma-8">
       <v-row>
         <v-col cols="6">
-          <ProductForm />
+          <ProductForm/>
         </v-col>
-        <v-col cols="6">
-          <productList />
+        
+      </v-row>
+      <v-row>
+        <v-col>
+          <productList/>
         </v-col>
       </v-row>
     </v-main>
@@ -16,8 +19,8 @@
 </template>
 
 <script>
-import ProductForm from "./components/ProductForm.vue";
-import productList from "./components/productList.vue";
+import ProductForm from "./components/ProductForm.vue"
+import productList from "./components/productList.vue"
 
 export default {
   name: "App",

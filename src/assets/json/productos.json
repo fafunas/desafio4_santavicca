@@ -1,0 +1,14 @@
+[
+    {
+      "nombrecomida": "Picada",
+      "precio": 123,
+      "cantidad": 1,
+      "descripcion": "Variedad de fiambres"
+    },
+    {
+      "nombrecomida": "Pollo",
+      "precio": 500,
+      "cantidad": 5,
+      "descripcion": "Pollo al limon con papas"
+    }
+  ]
