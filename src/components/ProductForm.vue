@@ -1,4 +1,5 @@
 <template>
+<div>
   <v-form ref="form" v-model="valid">
     <v-container>
       <v-row>
@@ -57,7 +58,27 @@
         Reiniciar Formulario
       </v-btn>
     </v-container>
+     <v-snackbar
+      v-model="snackbar"
+      :timeout="timeout"
+    >
+      {{ snackText }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="blue"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-form>
+  </div>
+
+
 </template>
 
 <script>
@@ -67,6 +88,9 @@ import axios from "axios";
 export default {
   data: () => ({
     valid: false,
+     snackbar: false,
+      snackText: '',
+      timeout: 3000,
     //   nombrecomida: "",
     // precio:"",
     //   descripcion: "",
@@ -85,12 +109,11 @@ export default {
     validate() {
       this.$refs.form.validate();
       this.addFood();
-      
     },
     reset() {
       this.$refs.form.reset();
     },
-/*     agregar() {
+    /*     agregar() {
       const newTarea = {
         nombrecomida: this.nombrecomida,
         precio: this.precio,
@@ -102,17 +125,23 @@ export default {
     }, */
 
     addFood() {
-      axios.post(
-        "https://61b24f08c8d4640017aaf359.mockapi.io/comidas",
-        this.defaultproduct,
-        console.log(this.defaultproduct)
-      )
-      .then((response) => {
+      axios
+        .post(
+          "https://61b24f08c8d4640017aaf359.mockapi.io/comidas",
+          this.defaultproduct,
+          console.log(this.defaultproduct)
+        )
+        .then((response) => {
           console.table(response.data);
+          this.snackText = "Producto Cargado Con exito"
+          this.snackbar = true
           this.reset();
         })
         .catch((err) => {
           console.error(`${err}`);
+          this.snackText = `${err}`
+          this.snackbar = true
+          this.reset();
         });
     },
   },
