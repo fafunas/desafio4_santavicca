@@ -1,37 +1,34 @@
 <template>
-  <v-app>
-    <v-app-bar app color="primary" dark> </v-app-bar>
-
-    <v-main class="ma-8">
-      <v-row>
-        <v-col cols="6">
-          <ProductForm/>
-        </v-col>
-        
-      </v-row>
-      <v-row>
-        <v-col>
-          <productList/>
-        </v-col>
-      </v-row>
-    </v-main>
+<v-app>
+  
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/form">Formulario</router-link>
+    </div>
+    <router-view/>
+ 
   </v-app>
 </template>
 
-<script>
-import ProductForm from "./components/ProductForm.vue"
-import productList from "./components/productList.vue"
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
-export default {
-  name: "App",
+#nav {
+  padding: 30px;
 
-  components: {
-    ProductForm,
-    productList,
-  },
+  a {
+    font-weight: bold;
+    color: #2c3e50;
 
-  data: () => ({
-    //
-  }),
-};
-</script>
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
+</style>
